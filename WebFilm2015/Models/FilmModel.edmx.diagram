@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="40dc0d6dc9f040339c2ea67f003e837c" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="FilmDB1Model.Country" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmDB1Model.Episode" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmDB1Model.Film" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmDB1Model.History" Width="1.5" PointX="5.375" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmDB1Model.Season" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmDB1Model.Type" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmDB1Model.View_History" Width="1.5" PointX="4.625" PointY="6.375" IsExpanded="true" />
+        <AssociationConnector Association="FilmDB1Model.FK_Film_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="FilmDB1Model.FK_Film_Episode" ManuallyRouted="false" />
+        <AssociationConnector Association="FilmDB1Model.FK_History_Episode" ManuallyRouted="false" />
+        <AssociationConnector Association="FilmDB1Model.FK_Film_Season" ManuallyRouted="false" />
+        <AssociationConnector Association="FilmDB1Model.FK_Film_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="FilmDB1Model.FK_History_Film" ManuallyRouted="false" />
+        <AssociationConnector Association="FilmDB1Model.FK_History_Season" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

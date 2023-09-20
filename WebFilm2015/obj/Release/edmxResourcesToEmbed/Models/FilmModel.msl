@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FilmDB1ModelStoreContainer" CdmEntityContainer="FilmDB1Entities">
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="FilmDB1Model.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="cname" ColumnName="cname" />
+          <ScalarProperty Name="cname_full" ColumnName="cname_full" />
+          <ScalarProperty Name="code" ColumnName="code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Episodes">
+      <EntityTypeMapping TypeName="FilmDB1Model.Episode">
+        <MappingFragment StoreEntitySet="Episode">
+          <ScalarProperty Name="episode_id" ColumnName="episode_id" />
+          <ScalarProperty Name="ename" ColumnName="ename" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Films">
+      <EntityTypeMapping TypeName="FilmDB1Model.Film">
+        <MappingFragment StoreEntitySet="Film">
+          <ScalarProperty Name="AspUserId" ColumnName="AspUserId" />
+          <ScalarProperty Name="film_id" ColumnName="film_id" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="fname_eng" ColumnName="fname_eng" />
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="year" ColumnName="year" />
+          <ScalarProperty Name="season_id" ColumnName="season_id" />
+          <ScalarProperty Name="episode_id" ColumnName="episode_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Histories">
+      <EntityTypeMapping TypeName="FilmDB1Model.History">
+        <MappingFragment StoreEntitySet="History">
+          <ScalarProperty Name="history_id" ColumnName="history_id" />
+          <ScalarProperty Name="film_id" ColumnName="film_id" />
+          <ScalarProperty Name="season_id" ColumnName="season_id" />
+          <ScalarProperty Name="episode_id" ColumnName="episode_id" />
+          <ScalarProperty Name="hdate" ColumnName="hdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seasons">
+      <EntityTypeMapping TypeName="FilmDB1Model.Season">
+        <MappingFragment StoreEntitySet="Season">
+          <ScalarProperty Name="season_id" ColumnName="season_id" />
+          <ScalarProperty Name="sname" ColumnName="sname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Types">
+      <EntityTypeMapping TypeName="FilmDB1Model.Type">
+        <MappingFragment StoreEntitySet="Type">
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="tname" ColumnName="tname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_History">
+      <EntityTypeMapping TypeName="FilmDB1Model.View_History">
+        <MappingFragment StoreEntitySet="View_History">
+          <ScalarProperty Name="AspUserId" ColumnName="AspUserId" />
+          <ScalarProperty Name="history_id" ColumnName="history_id" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="tname" ColumnName="tname" />
+          <ScalarProperty Name="sname" ColumnName="sname" />
+          <ScalarProperty Name="ename" ColumnName="ename" />
+          <ScalarProperty Name="hdate" ColumnName="hdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AddCountry" FunctionName="FilmDB1Model.Store.AddCountry" />
+    <FunctionImportMapping FunctionImportName="AddEpisode" FunctionName="FilmDB1Model.Store.AddEpisode" />
+    <FunctionImportMapping FunctionImportName="GetCountries" FunctionName="FilmDB1Model.Store.GetCountries">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FilmDB1Model.GetCountries_Result">
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="cname" ColumnName="cname" />
+          <ScalarProperty Name="cname_full" ColumnName="cname_full" />
+          <ScalarProperty Name="code" ColumnName="code" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetFilms" FunctionName="FilmDB1Model.Store.GetFilms">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FilmDB1Model.GetFilms_Result">
+          <ScalarProperty Name="film_id" ColumnName="film_id" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="fname_eng" ColumnName="fname_eng" />
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="tname" ColumnName="tname" />
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="cname" ColumnName="cname" />
+          <ScalarProperty Name="year" ColumnName="year" />
+          <ScalarProperty Name="season_id" ColumnName="season_id" />
+          <ScalarProperty Name="episode_id" ColumnName="episode_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="code" ColumnName="code" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetHistory" FunctionName="FilmDB1Model.Store.GetHistory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FilmDB1Model.GetHistory_Result">
+          <ScalarProperty Name="history_id" ColumnName="history_id" />
+          <ScalarProperty Name="film_id" ColumnName="film_id" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="season_id" ColumnName="season_id" />
+          <ScalarProperty Name="episode_id" ColumnName="episode_id" />
+          <ScalarProperty Name="hdate" ColumnName="hdate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="HistoryReport" FunctionName="FilmDB1Model.Store.HistoryReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FilmDB1Model.HistoryReport_Result">
+          <ScalarProperty Name="history_id" ColumnName="history_id" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="tname" ColumnName="tname" />
+          <ScalarProperty Name="sname" ColumnName="sname" />
+          <ScalarProperty Name="ename" ColumnName="ename" />
+          <ScalarProperty Name="hdate" ColumnName="hdate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateCountry" FunctionName="FilmDB1Model.Store.UpdateCountry" />
+    <FunctionImportMapping FunctionImportName="UpdateEpisodeId" FunctionName="FilmDB1Model.Store.UpdateEpisodeId" />
+    <FunctionImportMapping FunctionImportName="UpdateFilm" FunctionName="FilmDB1Model.Store.UpdateFilm" />
+    <FunctionImportMapping FunctionImportName="UpdateFilmId" FunctionName="FilmDB1Model.Store.UpdateFilmId" />
+    <FunctionImportMapping FunctionImportName="UpdateHistoryId" FunctionName="FilmDB1Model.Store.UpdateHistoryId" />
+    <FunctionImportMapping FunctionImportName="UpdateTypeId" FunctionName="FilmDB1Model.Store.UpdateTypeId" />
+  </EntityContainerMapping>
+</Mapping>

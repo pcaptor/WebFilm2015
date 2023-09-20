@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Каталог фильмов";
+}
+
+<h3>Каталог сериалов</h3>
+<div>
+    <table id="jqGrid"></table>
+    <div id="jqControls"></div>
+    <h3>История просмотров</h3>
+    <!-- <br/>История просмотров<br/> -->
+
+    <div id="detailsPlaceholder">
+        <table id="jqGridDetails"></table>
+        <div id="jqGridDetailsPager"></div>
+    </div>
+</div>
+@section scripts{
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/jquery.jqGrid/ui.jqgrid.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-ui-1.10.0.js"></script>
+    <script src="~/Scripts/i18n/grid.locale-ru.js"></script>
+    <script src="~/Scripts/jquery.jqGrid.min.js"></script>
+    <script src="~/Scripts/sweet-alert.js"></script>
+    <script src="~/Scripts/script.js"></script>
+    <link href="~/Content/sweetalert/sweet-alert.css" rel="stylesheet" />
+}
+

@@ -1,0 +1,10 @@
+2019-07-14 14:01:48.4589|Error|GetFilms
+2019-07-14 14:02:11.8897|Error|Login:  pcaptor@gmail.com   Sadmin_1   True
+2019-07-14 14:02:12.0345|Error|Login  result:  Success
+2019-07-14 14:02:14.5528|Error|GetFilms
+2019-07-14 14:33:05.9208|Error|GetFilms
+2019-07-14 14:33:27.6705|Error|Login:  pcaptor@gmail.com   Sadmin_1   True
+2019-07-14 14:33:27.7654|Error|Login  result:  Success
+2019-07-14 14:33:29.6496|Error|GetFilms
+2019-07-14 14:34:09.9995|Error|GetFilms
+2019-07-14 14:34:11.3102|Error|GetFilms

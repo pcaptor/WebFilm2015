@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FilmDB1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="country_id" />
+    </Key>
+    <Property Name="country_id" Type="int" Nullable="false" />
+    <Property Name="cname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="cname_full" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="code" Type="nvarchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Episode">
+    <Key>
+      <PropertyRef Name="episode_id" />
+    </Key>
+    <Property Name="episode_id" Type="int" Nullable="false" />
+    <Property Name="ename" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Film">
+    <Key>
+      <PropertyRef Name="film_id" />
+    </Key>
+    <Property Name="film_id" Type="int" Nullable="false" />
+    <Property Name="fname" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="fname_eng" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="type_id" Type="int" Nullable="false" />
+    <Property Name="country_id" Type="int" Nullable="false" />
+    <Property Name="year" Type="smallint" Nullable="false" />
+    <Property Name="season_id" Type="int" Nullable="false" />
+    <Property Name="episode_id" Type="int" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="500" />
+    <Property Name="AspUserId" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="history_id" />
+    </Key>
+    <Property Name="history_id" Type="int" Nullable="false" />
+    <Property Name="film_id" Type="int" Nullable="false" />
+    <Property Name="season_id" Type="int" Nullable="false" />
+    <Property Name="episode_id" Type="int" Nullable="false" />
+    <Property Name="hdate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Season">
+    <Key>
+      <PropertyRef Name="season_id" />
+    </Key>
+    <Property Name="season_id" Type="int" Nullable="false" />
+    <Property Name="sname" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="type_id" />
+    </Key>
+    <Property Name="type_id" Type="int" Nullable="false" />
+    <Property Name="tname" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'FilmDB1.dbo.View_History' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_History">
+    <Key>
+      <PropertyRef Name="history_id" />
+      <PropertyRef Name="fname" />
+      <PropertyRef Name="tname" />
+      <PropertyRef Name="sname" />
+      <PropertyRef Name="ename" />
+      <PropertyRef Name="hdate" />
+    </Key>
+    <Property Name="history_id" Type="int" Nullable="false" />
+    <Property Name="fname" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="tname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="sname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ename" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="hdate" Type="datetime" Nullable="false" />
+    <Property Name="AspUserId" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <Association Name="FK_Film_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="Film" Type="Self.Film" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="country_id" />
+      </Principal>
+      <Dependent Role="Film">
+        <PropertyRef Name="country_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Film_Episode">
+    <End Role="Episode" Type="Self.Episode" Multiplicity="1" />
+    <End Role="Film" Type="Self.Film" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Episode">
+        <PropertyRef Name="episode_id" />
+      </Principal>
+      <Dependent Role="Film">
+        <PropertyRef Name="episode_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Film_Season">
+    <End Role="Season" Type="Self.Season" Multiplicity="1" />
+    <End Role="Film" Type="Self.Film" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Season">
+        <PropertyRef Name="season_id" />
+      </Principal>
+      <Dependent Role="Film">
+        <PropertyRef Name="season_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Film_Type">
+    <End Role="Type" Type="Self.Type" Multiplicity="1" />
+    <End Role="Film" Type="Self.Film" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type">
+        <PropertyRef Name="type_id" />
+      </Principal>
+      <Dependent Role="Film">
+        <PropertyRef Name="type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_History_Episode">
+    <End Role="Episode" Type="Self.Episode" Multiplicity="1" />
+    <End Role="History" Type="Self.History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Episode">
+        <PropertyRef Name="episode_id" />
+      </Principal>
+      <Dependent Role="History">
+        <PropertyRef Name="episode_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_History_Film">
+    <End Role="Film" Type="Self.Film" Multiplicity="1" />
+    <End Role="History" Type="Self.History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Film">
+        <PropertyRef Name="film_id" />
+      </Principal>
+      <Dependent Role="History">
+        <PropertyRef Name="film_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_History_Season">
+    <End Role="Season" Type="Self.Season" Multiplicity="1" />
+    <End Role="History" Type="Self.History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Season">
+        <PropertyRef Name="season_id" />
+      </Principal>
+      <Dependent Role="History">
+        <PropertyRef Name="season_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="AddCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="AddEpisode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetCountries" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetFilms" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fname" Type="nvarchar" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+    <Parameter Name="EndDate" Type="datetime" Mode="In" />
+    <Parameter Name="TypeID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FilmID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="HistoryReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="start_date" Type="datetime" Mode="In" />
+    <Parameter Name="end_date" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="UpdateCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CountryId" Type="int" Mode="In" />
+    <Parameter Name="Cname" Type="nvarchar" Mode="In" />
+    <Parameter Name="Cname_full" Type="nvarchar" Mode="In" />
+    <Parameter Name="Code" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UpdateEpisodeId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EpisodeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UpdateFilm" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="film_id" Type="int" Mode="In" />
+    <Parameter Name="fname" Type="varchar" Mode="In" />
+    <Parameter Name="fname_eng" Type="varchar" Mode="In" />
+    <Parameter Name="type_id" Type="int" Mode="In" />
+    <Parameter Name="country_id" Type="int" Mode="In" />
+    <Parameter Name="year" Type="smallint" Mode="In" />
+    <Parameter Name="season_id" Type="int" Mode="In" />
+    <Parameter Name="episode_id" Type="int" Mode="In" />
+    <Parameter Name="user_id" Type="int" Mode="In" />
+    <Parameter Name="description" Type="varchar" Mode="In" />
+    <Parameter Name="NewFilmID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="UpdateFilmId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FilmID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UpdateHistoryId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="HistoryID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UpdateTypeId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TypeID" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="FilmDB1ModelStoreContainer">
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Episode" EntityType="Self.Episode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Film" EntityType="Self.Film" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Season" EntityType="Self.Season" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="View_History" EntityType="Self.View_History" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_History].[history_id] AS [history_id], 
+    [View_History].[fname] AS [fname], 
+    [View_History].[tname] AS [tname], 
+    [View_History].[sname] AS [sname], 
+    [View_History].[ename] AS [ename], 
+    [View_History].[hdate] AS [hdate], 
+    [View_History].[AspUserId] AS [AspUserId]
+    FROM [dbo].[View_History] AS [View_History]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Film_Country" Association="Self.FK_Film_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Film" EntitySet="Film" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Film_Episode" Association="Self.FK_Film_Episode">
+      <End Role="Episode" EntitySet="Episode" />
+      <End Role="Film" EntitySet="Film" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Film_Season" Association="Self.FK_Film_Season">
+      <End Role="Season" EntitySet="Season" />
+      <End Role="Film" EntitySet="Film" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Film_Type" Association="Self.FK_Film_Type">
+      <End Role="Type" EntitySet="Type" />
+      <End Role="Film" EntitySet="Film" />
+    </AssociationSet>
+    <AssociationSet Name="FK_History_Episode" Association="Self.FK_History_Episode">
+      <End Role="Episode" EntitySet="Episode" />
+      <End Role="History" EntitySet="History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_History_Film" Association="Self.FK_History_Film">
+      <End Role="Film" EntitySet="Film" />
+      <End Role="History" EntitySet="History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_History_Season" Association="Self.FK_History_Season">
+      <End Role="Season" EntitySet="Season" />
+      <End Role="History" EntitySet="History" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

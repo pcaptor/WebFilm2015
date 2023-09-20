@@ -1,0 +1,2 @@
+2020-09-18 10:24:14.0485|Error|Microsoft.AspNet.Identity.IdentityResult
+2020-09-18 10:24:39.5508|Error|Microsoft.AspNet.Identity.IdentityResult
